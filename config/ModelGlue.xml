@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modelglue>
+	
+	<controllers>
+		<controller id="MerchantController" type="mgtemplate.controller.MerchantController">
+			<message-listener message="userCheck" />
+			<message-listener message="addUser" />
+			<message-listener message="deleteUser" />
+			<message-listener message="editUser" />
+			<message-listener message="editUserGet" />
+		</controller>
+	</controllers>
+
+
+	<event-handlers>
+		<event-handler name="page.index">
+			<broadcasts>
+				<message name="userCheck" />
+			</broadcasts>
+			<views>
+				<include name="body" template="pages/index.cfm" />
+			</views>
+		</event-handler>
+		<event-handler name="page.add">
+			<views>
+				<include name="body" template="pages/add.cfm" />
+			</views>
+		</event-handler>
+		<event-handler name="action.addUser">
+			<broadcasts>
+				<message name="addUser" />
+			</broadcasts>
+			<results>
+				<result do="page.index" redirect="true" />
+			</results>
+		</event-handler>
+		<event-handler name="action.deleteUser">
+			<broadcasts>
+				<message name="deleteUser" />
+			</broadcasts>
+			<results>
+				<result do="page.index" redirect="true" />
+			</results>
+		</event-handler>
+		<event-handler name="action.editUser">
+			<broadcasts>
+				<message name="editUser" />
+			</broadcasts>
+			<results>
+				<result do="page.index" redirect="true" />
+			</results>
+		</event-handler>
+		<event-handler name="action.editUserRecordGet">
+			<broadcasts>
+				<message name="editUserGet" />
+			</broadcasts>
+			<views>
+				<include name="body" template="pages/edit.cfm" />
+			</views>
+		</event-handler>
+		<event-handler name="page.inde">
+			<broadcasts>
+				<message name="page.inde" />
+			</broadcasts>
+			<results />
+			<views>
+				<include name="body" template="page/inde.cfm" />
+			</views>
+		</event-handler>
+		<event-handler name="page.indesadas">
+			<broadcasts>
+				<message name="page.indesadas" />
+			</broadcasts>
+			<results />
+			<views>
+				<include name="body" template="page/indesadas.cfm" />
+			</views>
+		</event-handler>
+	</event-handlers>
+</modelglue>
+
